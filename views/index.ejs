@@ -8,6 +8,10 @@
   Delete Person
 </a>
 
+<a class="btn btn-success" role="button" data-toggle="collapse" href="#updateperson" aria-expanded="false" aria-controls="deleteperson">
+  Update PersonName
+</a>
+
 <a class="btn btn-primary" role="button" data-toggle="collapse" href="#addlocation" aria-expanded="false" aria-controls="addlocation">
   Add New Location
 </a>
@@ -42,6 +46,25 @@
   <h3>Delete Person</h3>
     <form method="POST" action="/person/delete">
         <input type="text" name="dname" placeholder="Name">
+        <input type="submit" value="Submit" class="btn btn-default btn-sm">
+    </form>
+   </div>
+   <div class="well">
+    <h3>Delete Person with Relationships</h3>
+      <form method="POST" action="/person/deletenode">
+          <input type="text" name="delnoname" placeholder="Name">
+          <input type="submit" value="Submit" class="btn btn-default btn-sm">
+      </form>
+     </div>
+</div>
+
+
+<div class="collapse" id="updateperson">
+  <div class="well">
+  <h3>Update PersonName</h3>
+    <form method="POST" action="/person/update">
+        <input type="text" name="acname" placeholder="Actual Name">
+        <input type="text" name="upname" placeholder="New Name">
         <input type="submit" value="Submit" class="btn btn-default btn-sm">
     </form>
    </div>

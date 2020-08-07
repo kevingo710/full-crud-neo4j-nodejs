@@ -132,12 +132,26 @@ app.post('/person/born/add', function(req, res){
         });
 });
 
+// Update Person Route
+app.post('/person/update', function(req, res){
+
+    session
+        .run("MATCH(n:Person{name:$nau})SET n.name = '"+req.body.upname+"' RETURN n.name", { nau: req.body.acname})
+        .then(function(result){
+            res.redirect('/')
+        })
+        .catch(
+            function (error){
+                console.log(error)
+            }
+        )
+
+})
+
 
 // Delete Person Route
 app.post('/person/delete', function(req, res){
-    // var name = req.body.dname;
-
-    
+  
     session
         .run("MATCH(n:Person{name:$no}) DELETE n", { no: req.body.dname })
         .then(function(result){
@@ -148,6 +162,21 @@ app.post('/person/delete', function(req, res){
             console.log(error);
         });
 });
+
+// Delete Person with RelationShip Route
+app.post('/person/deletenode', function(req, res){
+  
+    session
+        .run("MATCH(n:Person{name:$no}) DETACH DELETE n", { no: req.body.delnoname })
+        .then(function(result){
+            res.redirect('/');
+            // session.close();
+        })
+        .catch(function(error){
+            console.log(error);
+        });
+});
+
 
 // Delete Location Route
 app.post('/location/delete', function(req, res){

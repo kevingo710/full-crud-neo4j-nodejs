@@ -149,6 +149,19 @@ app.post('/person/delete', function(req, res){
         });
 });
 
+// Delete Location Route
+app.post('/location/delete', function(req, res){
+
+    session
+        .run("MATCH(n: Location{city:$ci}) DELETE n", { ci: req.body.delocation})
+        .then(function(result){
+            res.redirect('/');
+        })
+        .catch(function(error){
+            console.log(error);
+        });
+})
+
 // Person Route
 app.get('/person/:id', function(req, res){
     var id = req.params.id;

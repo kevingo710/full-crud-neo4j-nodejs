@@ -4,12 +4,16 @@
   Add New Person
 </a>
 
-<a class="btn btn-primary" role="button" data-toggle="collapse" href="#deleteperson" aria-expanded="false" aria-controls="deleteperson">
+<a class="btn btn-danger" role="button" data-toggle="collapse" href="#deleteperson" aria-expanded="false" aria-controls="deleteperson">
   Delete Person
 </a>
 
 <a class="btn btn-primary" role="button" data-toggle="collapse" href="#addlocation" aria-expanded="false" aria-controls="addlocation">
   Add New Location
+</a>
+
+<a class="btn btn-danger" role="button" data-toggle="collapse" href="#deletelocation" aria-expanded="false" aria-controls="deleteperson">
+  Delete Location
 </a>
 
 <a class="btn btn-primary" role="button" data-toggle="collapse" href="#connectfriends" aria-expanded="false" aria-controls="connectfriends">
@@ -50,6 +54,16 @@
     <form method="POST" action="/location/add">
         <input type="text" name="city" placeholder="City">
         <input type="text" name="state" placeholder="State">
+        <input type="submit" value="Submit" class="btn btn-default btn-sm">
+    </form>
+   </div>
+</div>
+
+<div class="collapse" id="deletelocation">
+  <div class="well">
+  <h3>Delete Location</h3>
+    <form method="POST" action="/location/delete">
+        <input type="text" name="delocation" placeholder="City">
         <input type="submit" value="Submit" class="btn btn-default btn-sm">
     </form>
    </div>

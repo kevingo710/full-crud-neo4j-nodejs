@@ -1,0 +1,35 @@
+<% include ../views/partials/header %>
+<a href="/">Go Back</a>
+<h1><i class="fa fa-user"></i> <%= name %></h1>
+<%if (city) { %>
+<h4><i class="fa fa-map-marker"></i> Birthplace: <%= city %>, <%= state %></h4>
+<% } %>
+
+<%if (friends.length > 0) { %>
+    <ul class="list-group">
+        <% friends.forEach(function(person) { %>
+            <li class="list-group-item"><a href="/person/<%= person.id %>"><%= person.name %></a></li>
+        <% }); %>
+    </ul>
+<% } %>
+
+<h3>Add Friend</h3>
+<form method="POST" action="/friends/connect">
+        <input type="hidden" name="id" value="<%= id %>">
+        <input type="hidden" name="name1" value="<%= name %>">
+        <input type="text" name="name2" placeholder="Name">
+        <input type="submit" value="Submit" class="btn btn-default btn-sm">
+</form>
+<br>
+
+ <h3>Add Birthplace</h3>
+<form method="POST" action="/person/born/add">
+    <input type="hidden" name="id" value="<%= id %>">
+    <input type="hidden" name="name" value="<%= name %>">
+    <input type="text" name="city" placeholder="City">
+    <input type="text" name="state" placeholder="State">
+    <input type="text" name="year" placeholder="Year">
+    <input type="submit" value="Submit" class="btn btn-default btn-sm">
+</form>
+
+<% include ../views/partials/footer %>
